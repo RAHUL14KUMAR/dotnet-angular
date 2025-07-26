@@ -1,0 +1,37 @@
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2 class="mb-0">Investment List</h2>
+    <a routerLink="/create" class="btn btn-primary">➕ Create Investment</a>
+  </div>
+
+  <table class="table table-striped table-hover table-bordered">
+    <thead class="table-dark">
+      <tr>
+        <th>Id</th>
+        <th>Investment Name</th>
+        <th>Investment Type</th>
+        <th>Amount</th>
+        <th>Purchase Date</th>
+        <th class="text-center">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let invest of investments">
+        <td>{{ invest.id }}</td>
+        <td>{{ invest.name }}</td>
+        <td>{{ invest.type }}</td>
+        <td>₹{{ invest.amount }}</td>
+        <td>{{ invest.purchaseDate }}</td>
+        <td class="text-center">
+          <a [routerLink]="['/update-Investment', invest.id]" class="btn btn-sm btn-warning me-2">
+            ✏️ Edit
+          </a>
+          <button class="btn btn-sm btn-danger" (click)="deleteInvestment(invest.id)">
+            🗑️ Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>

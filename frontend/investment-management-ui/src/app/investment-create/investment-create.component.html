@@ -1,0 +1,41 @@
+<div class="container mt-4">
+  <div class="card shadow-sm mx-auto" style="max-width: 600px;">
+    <div class="card-header bg-primary text-white text-center">
+      <h4 class="m-0">Add Investment</h4>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="investmentForm" class="p-3">
+        <div class="mb-3">
+          <label for="name" class="form-label">Investment Name</label>
+          <input type="text" id="name" class="form-control" formControlName="Name" placeholder="Enter investment name">
+            <div *ngIf="investmentForm.controls['Name'].invalid && investmentForm?.get('Name')?.touched" class="text-danger">
+            Investment name is required.
+            </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="type" class="form-label">Investment Type</label>
+          <select id="type" class="form-select" formControlName="Type">
+            <option value="">-- Select Type --</option>
+            <option *ngFor="let type of investmentTypes" [value]="type">{{ type }}</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label for="amount" class="form-label">Amount</label>
+          <input type="number" id="amount" class="form-control" formControlName="Amount" placeholder="e.g. 10000">
+        </div>
+
+        <div class="mb-3">
+          <label for="purchaseDate" class="form-label">Purchase Date</label>
+          <input type="date" id="purchaseDate" class="form-control" formControlName="PurchaseDate">
+        </div>
+
+        <div class="d-flex justify-content-between">
+          <button type="submit" class="btn btn-success" (click)="addInvestment()">Submit</button>
+
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
